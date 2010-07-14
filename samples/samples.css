@@ -1,0 +1,17 @@
+﻿body
+{
+	font-family: Verdana;
+	font-size: 12px;
+}
+
+.wikiSource
+{
+	text-align: center;
+	margin: auto;
+	margin-bottom: 5px;
+	background-color: #F5FAFE;
+	padding: 3px;
+	width: 50%;
+	border: darkblue 1px solid;
+}
+
