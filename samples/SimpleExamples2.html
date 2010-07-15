@@ -14,7 +14,7 @@
 		];
 	
 		$(document).ready(function() {
-			var movieTemplate = "<li><strong>${Name}</strong> (${ReleaseYear})</li></li>";
+			var movieTemplate = "<li><strong>${Name}</strong> (${ReleaseYear})</li>";
 
 			$.tmpl( movieTemplate, movies )
 				.appendTo( "#movieList" );
