@@ -2,29 +2,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-	<title>nje/jquery-tmpl: jQuery.tmpl() to render a template provided as an HTML string</title>
+	<title>nje/jquery-tmpl: Using jQuery.tmpl() to render a template provided as an HTML string</title>
 	<link href="samples.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
 	<script src="jquery.tmpl.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		var products = [
-			{ name: "Milk", price: 12.34 },
-			{ name: "Steak", price: 400.00 },
-			{ name: "Apple Juice", price: 2.99 }
+		var movies = [
+			{ Name:"The Red Violin", ReleaseYear:"1998" },
+			{ Name:"Eyes Wide Shut", ReleaseYear:"1999" },
+			{ Name:"The Inheritance", ReleaseYear:"1976" }
 		];
 	
 		$(document).ready(function() {
-				$.tmpl( "<li>${name} - ${price}</li>", products ).appendTo( "#productsList" );
+			var movieTemplate = "<li><strong>${Name}</strong> (${ReleaseYear})</li></li>";
+
+			$.tmpl( movieTemplate, movies )
+				.appendTo( "#movieList" );
 		});
 	</script>
 </head>
 <body>
 	<div class="wikiSource">
-		<h4>jQuery.tmpl() to render a template provided as an HTML string</h4>
+		<h4>Using .tmpl() to render a template declared in a script block</h4>
 		This is a live page using the sample code on <br />
 		<a href="http://wiki.github.com/nje/jquery-tmpl/simple-examples">http://wiki.github.com/nje/jquery-tmpl/simple-examples</a>
 	</div>
 
-	<ul id="productsList"></ul>
+	<h3>Movies List:</h3>
+	<ul id="movieList"></ul>
 </body>
 </html>
