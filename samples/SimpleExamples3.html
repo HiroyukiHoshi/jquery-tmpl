@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>nje/jquery-tmpl: Using .tmplItem() to get to the data and HTML of the template item</title>
+	<link href="samples.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+	.productName	{
+		cursor:pointer;
+		color: Blue;
+	}   
+	</style>
+
+	<script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
+	<script src="jquery.tmpl.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var products = [
+			{ name: "Milk", price: 12.34 },
+			{ name: "Steak", price: 400.00 },
+			{ name: "Apple Juice", price: 2.99 }
+		];
+	
+		$( ".productName" ).live( "click", function() {
+			var productTemplateItem = $.tmplItem( this );
+			var product = productTemplateItem.data;
+			var htmlNodes = productTemplateItem.nodes;
+			alert( "You clicked on '" + product.name + "'!" ); 
+		});
+
+		$(document).ready(function() {
+			$( "#productTemplate" ).tmpl( products )
+				.appendTo( "#productsList" );
+
+		});
+	</script>
+</head>
+<body>
+	<div class="wikiSource">
+		<h4>Using .tmplItem() to get to the data and HTML of the template item</h4>
+		This is a live page using the sample code on <br />
+		<a href="http://wiki.github.com/nje/jquery-tmpl/simple-examples">http://wiki.github.com/nje/jquery-tmpl/simple-examples</a>
+	</div>
+
+
+	<script id="productTemplate" type="text/html">
+		<li>
+			<span class="productName">${name}</span> - ${price}
+		</li>
+	</script>
+
+
+	<ul id="productsList"></ul>
+</body>
+</html>
