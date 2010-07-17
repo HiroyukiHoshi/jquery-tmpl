@@ -2,39 +2,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-	<title>nje/jquery-tmpl: Using jQuery.tmplItem() to get to the data and HTML of the template item</title>
-	<link href="samples.css" rel="stylesheet" type="text/css" />
-	<style type="text/css">
-	.movieName	{
-		cursor:pointer;
-		color: Blue;
-	}
-	</style>
+	<title>nje/jquery-tmpl: Using .tmplItem() to get to the data and HTML of the template item</title>
+	<link href="../../samples.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
-	<script src="jquery.tmpl.js" type="text/javascript"></script>
+	<script src="../../jquery.tmpl.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		var movies = [
 			{ Name:"The Red Violin", ReleaseYear:"1998" },
 			{ Name:"Eyes Wide Shut", ReleaseYear:"1999" },
 			{ Name:"The Inheritance", ReleaseYear:"1976" }
 		];
-	
-		$( ".movieName" ).live( "click", function() {
-			var movieTemplateItem = $.tmplItem( this );
-			var movie = movieTemplateItem.data;
-			var htmlNodes = movieTemplateItem.nodes;
-			alert( "'" + movie.Name + "' was released in " + movie.ReleaseYear + "." ); 
-		});
 
 		$(document).ready(function() {
+			// Render the template with the 'movies' data
 			$( "#movieTemplate" ).tmpl( movies )
+				// and insert the rendered HTML into the 'movieList'
 				.appendTo( "#movieList" );
+
+			$( "#lastMovie" ).click( function() {
+
+				// Get the data structure for the 'template item' 
+				// which the last '.movieName' element belongs to
+				var lastTemplateItem = $( ".movieName:last" ).tmplItem();
+
+				// Get the corresponding data item
+				var movie = lastTemplateItem.data;
+
+				// Get the HTML nodes that make up the template item
+				var htmlNodes = lastTemplateItem.nodes;
+		
+				alert( "'" + movie.Name + "' was released in " 
+					+ movie.ReleaseYear + "." ); 
+			});
 		});
 	</script>
 </head>
 <body>
 	<div class="wikiSource">
-		<h4>Using jQuery.tmplItem() to get to the data and HTML of the template item</h4>
+		<h4>Using .tmplItem() to get to the data and HTML of the template item</h4>
 		This is a live page using the sample code on <br />
 		<a href="http://wiki.github.com/nje/jquery-tmpl/simple-examples">http://wiki.github.com/nje/jquery-tmpl/simple-examples</a>
 	</div>
@@ -48,5 +53,7 @@
 
 	<h3>Movies List:</h3>
 	<ul id="movieList"></ul>
+
+	<input id="lastMovie" type="button" value="Last movie: details" />
 </body>
 </html>

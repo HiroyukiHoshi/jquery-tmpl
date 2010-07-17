@@ -3,9 +3,9 @@
 
 <head>
 	<title>nje/jquery-tmpl: Using .tmpl() to render a template declared in a script block</title>
-	<link href="samples.css" rel="stylesheet" type="text/css" />
+	<link href="../../samples.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
-	<script src="jquery.tmpl.js" type="text/javascript"></script>
+	<script src="../../jquery.tmpl.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		var movies = [
 			{ Name:"The Red Violin", ReleaseYear:"1998" },
@@ -14,7 +14,9 @@
 		];
 	
 		$(document).ready(function() {
+			// Render the template with the 'movies' data
 			$( "#movieTemplate" ).tmpl( movies )
+				// and insert the rendered HTML into the 'movieList'
 				.appendTo( "#movieList" );
 		});
 	</script>
