@@ -75,24 +75,23 @@
 	</script>
 </head>
 <body>
-<div class="wikiSource">
-	<h4>Rendering remote data from a service</h4>
-	This is a live page using the sample code on <br />
-	<a href="http://wiki.github.com/nje/jquery-tmpl/simple-examples">http://wiki.github.com/nje/jquery-tmpl/simple-examples</a>
-</div>
+	<div class="wikiSource">
+		<h4>Rendering remote data from a service</h4>
+		This is a live page using the sample code on <br />
+		<a href="http://wiki.github.com/nje/jquery-tmpl/simple-examples">http://wiki.github.com/nje/jquery-tmpl/simple-examples</a>
+	</div>
 
-<script id="movieTemplate" type="text/html">
-	<li>
-		<strong class="movieName">${Name}</strong>
-		(${ReleaseYear})
-	</li>
-</script>
+	<script id="movieTemplate" type="text/html">
+		<li>
+			<strong class="movieName">${Name}</strong>
+			(${ReleaseYear})
+		</li>
+	</script>
 
-<input id="prevPage" type="button" value="Previous" />
-<input id="nextPage" type="button" value="Next" />
+	<input id="prevPage" type="button" value="Previous" />
+	<input id="nextPage" type="button" value="Next" />
 
-<h3>Movies List (Click for info):</h3>
-<ul id="movieList"><li>loading...</li></ul>
-
+	<h3>Movies List (Click for info):</h3>
+	<ul id="movieList"><li>loading...</li></ul>
 </body>
 </html>

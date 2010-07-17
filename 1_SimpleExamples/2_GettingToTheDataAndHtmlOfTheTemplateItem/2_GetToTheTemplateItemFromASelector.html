@@ -4,6 +4,12 @@
 <head>
 	<title>nje/jquery-tmpl: Using .tmplItem() to get to the data and HTML of the template item</title>
 	<link href="../../samples.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+	.movieName	{
+		cursor:pointer;
+		color: Blue;
+	}
+	</style>
 	<script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
 	<script src="../../jquery.tmpl.js" type="text/javascript"></script>
 	<script type="text/javascript">
@@ -19,9 +25,8 @@
 				// and insert the rendered HTML into the 'movieList'
 				.appendTo( "#movieList" );
 
-			// Add an onclick handler for the button
+			// Click handler for button
 			$( "#lastMovieBtn" ).click( function() {
-
 				// Get the data structure for the 'template item' 
 				// which the last '.movieName' element belongs to
 				var lastTemplateItem = $( ".movieName:last" ).tmplItem();
@@ -36,6 +41,7 @@
 					+ movie.ReleaseYear + "." ); 
 			});
 		});
+
 	</script>
 </head>
 <body>
@@ -55,6 +61,7 @@
 	<h3>Movies List:</h3>
 	<ul id="movieList"></ul>
 
-	<input id="lastMovieBtn" type="button" value="Last movie: details" />
+	<input id="lastMovieBtn" type="button" value="Last movie" />
+
 </body>
 </html>
