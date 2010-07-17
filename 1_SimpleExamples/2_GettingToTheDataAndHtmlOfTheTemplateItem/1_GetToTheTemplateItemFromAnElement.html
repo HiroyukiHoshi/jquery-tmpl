@@ -18,21 +18,22 @@
 			{ Name:"Eyes Wide Shut", ReleaseYear:"1999" },
 			{ Name:"The Inheritance", ReleaseYear:"1976" }
 		];
-	
+
+		// Add an onclick handler for the movie template items
 		$( ".movieName" ).live( "click", function() {
 
-		// Get the data structure for the 'template item' 
-		// which this clicked element belongs to
-		var movieTemplateItem = $.tmplItem( this );
+			// Get the data structure for the 'template item' 
+			// which this clicked element belongs to
+			var movieTemplateItem = $.tmplItem( this );
 
-		// Get the current data item
-		var movie = movieTemplateItem.data;
+			// Get the current data item
+			var movie = movieTemplateItem.data;
 
-		// Get the HTML nodes that make up this template item
-		var htmlNodes = movieTemplateItem.nodes;
+			// Get the HTML nodes that make up this template item
+			var htmlNodes = movieTemplateItem.nodes;
 
-		alert( "'" + movie.Name + "' was released in " 
-			+ movie.ReleaseYear + "." ); 
+			alert( "'" + movie.Name + "' was released in " 
+				+ movie.ReleaseYear + "." ); 
 
 		});
 

@@ -19,7 +19,8 @@
 				// and insert the rendered HTML into the 'movieList'
 				.appendTo( "#movieList" );
 
-			$( "#lastMovie" ).click( function() {
+			// Add an onclick handler for the button
+			$( "#lastMovieBtn" ).click( function() {
 
 				// Get the data structure for the 'template item' 
 				// which the last '.movieName' element belongs to
@@ -30,7 +31,7 @@
 
 				// Get the HTML nodes that make up the template item
 				var htmlNodes = lastTemplateItem.nodes;
-		
+
 				alert( "'" + movie.Name + "' was released in " 
 					+ movie.ReleaseYear + "." ); 
 			});

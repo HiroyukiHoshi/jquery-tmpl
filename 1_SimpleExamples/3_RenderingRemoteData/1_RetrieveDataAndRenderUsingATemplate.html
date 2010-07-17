@@ -14,7 +14,8 @@
 	<script src="../../jquery.tmpl.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		var index = 1, genre = "Drama", pageSize = 50, recordsCount = pageSize + 1;
-	
+
+		// Add an onclick handler for the movie template items
 		$( ".movieName" ).live( "click", function() {
 			var movie = $.tmplItem( this ).data;
 			alert( "'" + movie.Name + "' was released in " + movie.ReleaseYear + ".\n\n"
@@ -22,25 +23,29 @@
 		});
 
 		$(document).ready(function() {
-			getMoviesPage();
-			
+			// Get first page of movie items
+			getMovies();
+
+			// Click handlers for next and prev
 			$( "#nextPage" ).click( function() {
 				index++;
-				getMoviesPage()
+				getMovies()
 			});
 
 			$( "#prevPage" ).click( function() {
 				index--;
-				getMoviesPage()
+				getMovies()
 			});
 		});
 
-		function getMoviesPage() {
-			var query = "http://odata.netflix.com/Catalog/Genres('" + genre + "')/Titles" +
-				"?$format=json&$orderby=Name&$inlinecount=allpages" +
-				"&$skip=" + (index-1) * pageSize +		// skip to first record of page
-				"&$top=" + pageSize;					// page size
+		function getMovies() {
+			// Fetch a page of movie items from NetFlix OData JSON service
+			var query = "http://odata.netflix.com/Catalog/Genres('" + genre + "')/Titles" 
+				+ "?$format=json&$orderby=Name&$inlinecount=allpages"
+				// skip to first record of page
+				+ "&$skip=" + (index-1) * pageSize + "&$top=" + pageSize;
 
+			// Make the AJAX call to the service
 			$.ajax({
 				dataType: "jsonp",
 				url: query,
@@ -48,45 +53,46 @@
 				success: showMovies
 			});
 		}
-	
+
 		function showMovies( data ) {
+			// Get the movies array from the data
 			var movies = data.d.results;
+			// Set the number of records, obtained from the service
 			recordsCount = data.d.__count;
-			
+
+			// Enable/disable buttons
 			$( "#prevPage" ).attr( "disabled", index > 1 ? "" : "disabled" );
 			$( "#nextPage" ).attr( "disabled", index*pageSize < recordsCount ? "" : "disabled" );
-			
+
+			// Remove current set of movie template items
 			$( "#movieList" ).empty();
-		
-			// Render the template with the 'movies' data
+
+			// Render the template items for each movie
 			$( "#movieTemplate" ).tmpl( movies )
-				// and insert the rendered HTML into the 'movieList'
+				// and insert the template items into the 'movieList'
 				.appendTo( "#movieList" );
 		}
-
 	</script>
 </head>
 <body>
-	<div class="wikiSource">
-		<h4>Rendering remote data from a service</h4>
-		This is a live page using the sample code on <br />
-		<a href="http://wiki.github.com/nje/jquery-tmpl/simple-examples">http://wiki.github.com/nje/jquery-tmpl/simple-examples</a>
-	</div>
+<div class="wikiSource">
+	<h4>Rendering remote data from a service</h4>
+	This is a live page using the sample code on <br />
+	<a href="http://wiki.github.com/nje/jquery-tmpl/simple-examples">http://wiki.github.com/nje/jquery-tmpl/simple-examples</a>
+</div>
 
-	<script id="movieTemplate" type="text/html">
-		<li>
-			<strong class="movieName">${Name}</strong>
-			(${ReleaseYear})
-		</li>
-	</script>
+<script id="movieTemplate" type="text/html">
+	<li>
+		<strong class="movieName">${Name}</strong>
+		(${ReleaseYear})
+	</li>
+</script>
 
-	<input id="prevPage" type="button" value="Previous" />
-	<input id="nextPage" type="button" value="Next" />
+<input id="prevPage" type="button" value="Previous" />
+<input id="nextPage" type="button" value="Next" />
 
-	<h3>Movies List (Click for info):</h3>
-	<ul id="movieList"><li>loading...</li></ul>
+<h3>Movies List (Click for info):</h3>
+<ul id="movieList"><li>loading...</li></ul>
 
 </body>
 </html>
-
-

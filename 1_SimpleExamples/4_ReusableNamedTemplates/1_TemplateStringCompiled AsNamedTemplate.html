@@ -12,7 +12,7 @@
 			{ Name:"Eyes Wide Shut", ReleaseYear:"1999" },
 			{ Name:"The Inheritance", ReleaseYear:"1976" }
 		];
-	
+
 		var sciFiMovies = [
 			{ Name:"Brazil", ReleaseYear:"1985" },
 			{ Name:"Dune", ReleaseYear:"1984 " },
@@ -23,8 +23,8 @@
 			// This line will compile the template, and provide access to it by name
 			$.templates( "movieTmpl", 
 				"<li><strong>${Name}</strong> (${ReleaseYear})</li>" );
-	
-			// The following lines use the compiled template to render data and HTML		
+
+			// The following lines use the compiled template to render data and HTML
 			$.tmpl( "movieTmpl", dramaMovies )
 				.appendTo( "#dramaMovieList" );
 
