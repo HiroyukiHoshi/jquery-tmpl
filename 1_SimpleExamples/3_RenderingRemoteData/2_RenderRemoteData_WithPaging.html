@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-	<title>nje/jquery-tmpl: Rendering remote data from a service</title>
+	<title>nje/jquery-tmpl: Rendering remote data, with paging</title>
 	<link href="../../samples.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 	.movieName	{
@@ -15,31 +15,25 @@
 	<script type="text/javascript">
 		var index = 1, genre = "Drama", pageSize = 50, recordsCount = pageSize + 1;
 
-		// Add an onclick handler for the movie template items
-		$( ".movieName" ).live( "click", function() {
-			var movie = $.tmplItem( this ).data;
-			alert( "'" + movie.Name + "' was released in " + movie.ReleaseYear + ".\n\n"
-			+ (movie.ShortSynopsis || "") ); 
-		});
-
 		$(document).ready(function() {
 			// Get first page of movie items
 			getMovies();
 
 			// Click handlers for next and prev
-			$( "#nextPage" ).click( function() {
-				index++;
+			$( "#previousBtn" ).click( function() {
+				index--;
 				getMovies()
 			});
 
-			$( "#prevPage" ).click( function() {
-				index--;
+			$( "#nextBtn" ).click( function() {
+				index++;
 				getMovies()
 			});
 		});
 
 		function getMovies() {
 			// Fetch a page of movie items from NetFlix OData JSON service
+			// Build the query string
 			var query = "http://odata.netflix.com/Catalog/Genres('" + genre + "')/Titles" 
 				+ "?$format=json&$orderby=Name&$inlinecount=allpages"
 				// skip to first record of page
@@ -61,8 +55,8 @@
 			recordsCount = data.d.__count;
 
 			// Enable/disable buttons
-			$( "#prevPage" ).attr( "disabled", index > 1 ? "" : "disabled" );
-			$( "#nextPage" ).attr( "disabled", index*pageSize < recordsCount ? "" : "disabled" );
+			$( "#previousBtn" ).attr( "disabled", index > 1 ? "" : "disabled" );
+			$( "#nextBtn" ).attr( "disabled", index*pageSize < recordsCount ? "" : "disabled" );
 
 			// Remove current set of movie template items
 			$( "#movieList" ).empty();
@@ -72,13 +66,21 @@
 				// and insert the template items into the 'movieList'
 				.appendTo( "#movieList" );
 		}
+
+		// Add an onclick handler for the movie template items
+		$( ".movieName" ).live( "click", function() {
+			var movie = $.tmplItem( this ).data;
+			alert( "'" + movie.Name + "' was released in " + movie.ReleaseYear + ".\n\n"
+			+ (movie.ShortSynopsis || "") ); 
+		});
+
 	</script>
 </head>
 <body>
 	<div class="wikiSource">
-		<h4>Rendering remote data from a service</h4>
+		<h4>Rendering remote data, with paging</h4>
 		This is a live page using the sample code on <br />
-		<a href="http://wiki.github.com/nje/jquery-tmpl/simple-examples">http://wiki.github.com/nje/jquery-tmpl/simple-examples</a>
+		<a href="http://wiki.github.com/nje/jquery-tmpl/simple-examples">http://wiki.github.com/nje/jquery-tmpl/rendering-remote-data</a>
 	</div>
 
 	<script id="movieTemplate" type="text/html">
@@ -88,8 +90,8 @@
 		</li>
 	</script>
 
-	<input id="prevPage" type="button" value="Previous" />
-	<input id="nextPage" type="button" value="Next" />
+	<input id="previousBtn" type="button" value="Previous" />
+	<input id="nextBtn" type="button" value="Next" />
 
 	<h3>Movies List (Click for info):</h3>
 	<ul id="movieList"><li>loading...</li></ul>
