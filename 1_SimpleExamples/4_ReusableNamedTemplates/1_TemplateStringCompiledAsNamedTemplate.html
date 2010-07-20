@@ -21,14 +21,14 @@
 
 		$(document).ready(function() {
 			// This line will compile the template, and provide access to it by name
-			$.templates( "movieTmpl", 
+			$.templates( "userDefinedName", 
 				"<li><strong>${Name}</strong> (${ReleaseYear})</li>" );
 
 			// The following lines use the compiled template to render data and HTML
-			$.tmpl( "movieTmpl", dramaMovies )
+			$.tmpl( "userDefinedName", dramaMovies )
 				.appendTo( "#dramaMovieList" );
 
-			$.tmpl( "movieTmpl", sciFiMovies )
+			$.tmpl( "userDefinedName", sciFiMovies )
 				.appendTo( "#sciFiMovieList" );
 		});
 	</script>

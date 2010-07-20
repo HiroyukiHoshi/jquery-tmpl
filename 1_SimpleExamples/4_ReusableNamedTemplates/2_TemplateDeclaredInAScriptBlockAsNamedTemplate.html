@@ -21,14 +21,14 @@
 
 		$(document).ready(function() {
 			// This line provides access to the compiled template by name
-			$( "#movieTemplate" ).templates( "movieTmpl" );
+			$( "#movieTemplate" ).templates( "userDefinedName" );
 	
 			// The following lines acccess the compiled template by name,
 			// to render data and HTML
-			$.tmpl( "movieTmpl", dramaMovies )
+			$.tmpl( "userDefinedName", dramaMovies )
 				.appendTo( "#dramaMovieList" );
 
-			$.tmpl( "movieTmpl", sciFiMovies )
+			$.tmpl( "userDefinedName", sciFiMovies )
 				.appendTo( "#sciFiMovieList" );
 		});
 	</script>

@@ -15,12 +15,12 @@
 	<script type="text/javascript">
 
 		$(document).ready(function() {
-			// Button to get Cartoon movies
+			// Click handler for button to get Cartoon movies
 			$( "#cartoonsBtn" ).click( function() {
 				getMovies( "Cartoons", 0, 50 );
 			});
 
-			// Get Cartoon movies
+			// Click handler for button to get Drama movies
 			$( "#dramaBtn" ).click( function() {
 				getMovies( "Drama", 0, 50 );
 			});
@@ -32,7 +32,7 @@
 				dataType: "jsonp",
 				url: "http://odata.netflix.com/Catalog/Genres('" +  genre + "')/Titles?$format=json&$skip=" + skip + "&$top=" + top,
 				jsonp: "$callback",
-				success: function showMovies( data ) {
+				success: function( data ) {
 					// Get the movies array from the data
 					var movies = data.d;
 					
@@ -44,7 +44,6 @@
 						// and insert the template items into the 'movieList'
 						.appendTo( "#movieList" );
 				}
-
 			});
 		}
 

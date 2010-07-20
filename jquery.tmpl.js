@@ -132,7 +132,7 @@
 				return []; // Could throw...
 			}
 			if ( typeof data === "function" ) {
-				data = data.call( parentItem.data || {}, parentItem );
+				data = data.call( parentItem || {} );
 			}
 			ret = jQuery.isArray( data ) ? 
 				jQuery.map( data, function( dataItem ) {
@@ -301,7 +301,7 @@
 				.replace( /\${([^}]*)}/g, "{{= $1}}" )
 				.replace( /{{(\/?)(\w+|.)(?:\(((?:.(?!}}))*?)?\))?(?:\s+(.*?)?)?(\((.*?)\))?\s*}}/g,
 				function( all, slash, type, fnargs, target, parens, args ) {
-					var cmd = jQuery.tmpl.tags[ type ], def, expr;
+					var cmd = jQuery.tmpl.tags[ type ], def, expr, exprAutoFnDetect;
 					if ( !cmd ) {
 						throw "Template command not found: " + type;
 					}
