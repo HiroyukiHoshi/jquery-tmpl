@@ -136,7 +136,7 @@
 			}
 			ret = jQuery.isArray( data ) ? 
 				jQuery.map( data, function( dataItem ) {
-					return newTmplItem( options, parentItem, tmpl, dataItem );
+					return dataItem ? newTmplItem( options, parentItem, tmpl, dataItem ) : null;
 				}) :
 				[ newTmplItem( options, parentItem, tmpl, data ) ];
 
@@ -264,9 +264,7 @@
 		// Support templates which have initial or final text nodes, or consist only of text
 		// Also support HTML entities within the HTML markup.
 		ret.replace( /^\s*([^<\s][^<]*)?(<[\w\W]+>)([^>]*[^>\s])?\s*$/, function( all, before, middle, after) {
-			frag = jQuery( middle ).get(); // For now use get(), since buildFragment is not current public
-//					frag = jQuery.buildFragment( [middle] ); // If buildFragment was public, could do these two lines instead
-//					frag = frag.cacheable ? frag.fragment.cloneNode(true) : frag.fragment;
+			frag = jQuery( middle ).get(); 
 
 			storeTmplItems( frag );
 			if ( before ) {
@@ -280,7 +278,7 @@
 	}
 
 	function unencode( text ) {
-		// createTextNode will not render HTML entities correctly
+		// Use createElement, since createTextNode will not render HTML entities correctly
 		var el = document.createElement( "div" );
 		el.innerHTML = text;
 		return jQuery.makeArray(el.childNodes);
