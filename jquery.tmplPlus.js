@@ -38,8 +38,7 @@
 				coll = tmplItem.nodes;
 				switch ( command ) {
 					case "update":
-						jQuery.tmpl( null, null, null, tmplItem ).insertBefore( coll[0] );
-						jQuery( coll ).remove();
+						tmplItem.update();
 						break;
 					case "remove":
 						jQuery( coll ).remove();
@@ -77,10 +76,10 @@
 			if ( args.length >= 2 && typeof data === "object" && !data.nodeType && !(data instanceof jQuery)) {
 				// args[1] is data, for a template.
 				dmArgs = jQuery.makeArray( arguments );
-				
+
 				// Eval template to obtain fragment to clone and insert
-				dmArgs[0] = [ jQuery.tmpl( jQuery.templates( tmpl ), data, args[2], args[3], true ) ];
-				
+				dmArgs[0] = [ jQuery.tmpl( jQuery.templates( tmpl ), data, args[2], args[3] ) ];
+
 				dmArgs[2] = function( fragClone ) {
 					// Handler called by oldManip when rendered template has been inserted into DOM.
 					jQuery.tmpl.afterManip( this, fragClone, callback );
