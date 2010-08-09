@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-	<title>nje/jquery-tmpl: Using .templates() to compile a template string into a reusable 'named template'</title>
+	<title>nje/jquery-tmpl: Using .template() to compile a template string into a reusable 'named template'</title>
 	<link href="../../samples.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
 	<script src="../../jquery.tmpl.js" type="text/javascript"></script>
@@ -21,7 +21,7 @@
 
 		$(document).ready(function() {
 			// This line will compile the template, and provide access to it by name
-			$.templates( "userDefinedName", 
+			$.template( "userDefinedName", 
 				"<li><strong>${Name}</strong> (${ReleaseYear})</li>" );
 
 			// The following lines use the compiled template to render data and HTML
@@ -35,7 +35,7 @@
 </head>
 <body>
 	<div class="wikiSource">
-		<h4>Using .templates() to compile a template string into a reusable 'named template'</h4>
+		<h4>Using .template() to compile a template string into a reusable 'named template'</h4>
 		This is a live page using the sample code on <br />
 		<a href="http://wiki.github.com/nje/jquery-tmpl/simple-examples">http://wiki.github.com/nje/jquery-tmpl/simple-examples</a>
 	</div>
