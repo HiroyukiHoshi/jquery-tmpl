@@ -5,6 +5,10 @@
 
 #viewer table 
 {
+	border-collapse: collapse;
+	border: none;
+	margin-top: 20px;
+	margin-bottom: 20px;
 	vertical-align: middle;
 	text-align: center;
 	margin-bottom: 10px;
@@ -29,14 +33,6 @@
 	background-color: #f8f8f8;
 	border-bottom: solid 1px #1E1ED2;
 	width: 170px;
-}
-
-#viewer
-{
-	border-collapse: collapse;
-	border: none;
-	margin-top: 20px;
-	margin-bottom: 20px;
 }
 
 #viewer tr
