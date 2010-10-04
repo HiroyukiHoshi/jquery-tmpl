@@ -1,44 +1,18 @@
-A jQuery templating plugin.
-Note: this plugin requires jquery version 1.4.2.
-____________________________________________________________________
+# jQuery Templates plugin
 
-	// Render one LI, filled with data, then append it into the UL
+_Note: this plugin requires jquery version 1.4.2._
+ 
+jQuery templates contain markup with binding expressions. Templates are applied to data objects or arrays, and rendered into the HTML DOM.
 
-	$.tmpl( "<li>${firstName}</li>", dataObject )
-		.appendTo( "ul" );
-____________________________________________________________________
+### jQuery Templates is now an _Official jQuery Plugin_.
 
-	<!-- Declare a template as a script block of type "text/x-jquery-tmpl" -->
+This repository was originally forked from John Resig's <a href="http://github.com/jquery/jquery-tmpl">jquery/jquery-tmpl</a> 'micro-templating' prototype. Extensive changes and additions were made, and the resulting plugin has now been adopted by jQuery as an _Official jQuery Plugin_. See <a href="http://www.borismoore.com/2010/10/jquery-templates-is-now-official-jquery.html">http://www.borismoore.com/2010/10/jquery-templates-is-now-official-jquery.html</a> for more background. 
 
-	<script id="sometmpl" type="text/x-jquery-tmpl">
-		<li>${firstName}</li>
-	</script>
-____________________________________________________________________
+As a result, the code in this repository has been pulled back into the main <a href="http://github.com/jquery/jquery-tmpl">jquery/jquery-tmpl</a> repository. 
 
-	// Render the declared template as one LI appended to the target UL
+A full set of documentation for the official version of this plugin is now available on the jQuery documentation site:
+<a href="http://api.jquery.com/category/plugins/templates">http://api.jquery.com/category/plugins/templates/</a>.
 
-	$( "#sometmpl" )
-		.tmpl( dataObject )
-		.appendTo( "ul" );
-____________________________________________________________________
+### Relationship between this fork and the official _jQuery Templates_ plugin.
 
-	// Render the declared template as multiple LIs appended to the target UL
-	// Provide a click event accessing the data
-
-	$( "#sometmpl" )
-		.tmpl( arrayOfDataObjects )
-		.appendTo( "ul" )
-		.click( function() {
-			alert( $.tmpl(this).data.firstName );
-		});
-____________________________________________________________________
-
-	// Store a string as a compiled template for later use
-	$.template( "myTmpl", "<span>${firstName}</span>" );
-
-	// Render stored template and insert after target. 
-	$.tmpl( "myTmpl", dataObject )
-		.insertAfter( "#target" );
-
-____________________________________________________________________
-
+This fork will now be maintained for ongoing work on new features or fixes that could later become part of the official jQuery Templates plugin. Of course there is no guarantee that any specific additional feature in this fork will be included in a later version of <a href="http://github.com/jquery/jquery-tmpl">jquery/jquery-tmpl</a>.
