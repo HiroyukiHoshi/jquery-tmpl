@@ -1,11 +1,5 @@
-## This repository is no longer the home of the official jQuery Templates plugin, which is now at [http://github.com/jquery/jquery-tmpl](http://github.com/jquery/jquery-tmpl).
+## This repository was the home of the jQuery Templates plugin, and is no longer active.
 
-The code source has been removed in the latest commit, to prevent confusion, leaving just this readme. 
+This plugin (jQuery Templates) (clone of (and the clone at [github.com/BorisMoore/jquery-tmpl](https://github.com/BorisMoore/jquery-tmpl) was adopted by the jQuery team as an official plugin, and migrated to [http://github.com/jquery/jquery-tmpl](http://github.com/jquery/jquery-tmpl). It is now owned by jQuery UI, who have decided to discontinue development. 
 
-### History of this repository
-This repository was originally forked from John Resig's <a href="http://github.com/jquery/jquery-tmpl">jquery/jquery-tmpl</a> 'micro-templating' prototype. Extensive changes and additions were made, and the resulting plugin has now been adopted by jQuery as an _Official jQuery Plugin_. 
-
-See <a href="http://www.borismoore.com/2010/10/jquery-templates-is-now-official-jquery.html">http://www.borismoore.com/2010/10/jquery-templates-is-now-official-jquery.html</a> for more background. 
-
-The code that was in this repository was therefore pulled into the main <a href="http://github.com/jquery/jquery-tmpl">jquery/jquery-tmpl</a> repository, which is now the <strong>official _JQuery Templates_ plugin repository</strong>. (The pulled code is the Beta1 release of the official plugin). 
-
+**Note: Ongoing work on a next-generation version of jQuery Templates can be found at [JsRender](https://github.com/BorisMoore/jsrender) and [JsViews](https://github.com/BorisMoore/jsviews). See also [this blog post](http://www.borismoore.com/2011/10/jquery-templates-and-jsviews-roadmap.html) for more context on the roadmap for jQuery Templates, JsRender and JsViews...** 
